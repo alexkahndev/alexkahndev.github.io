@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3272bd3c.css",
+    "main.js": "/static/js/main.cc91bc96.js",
+    "static/js/496.cee00f11.chunk.js": "/static/js/496.cee00f11.chunk.js",
+    "static/media/Flixster2.gif": "/static/media/Flixster2.35017950409eb12cc040.gif",
+    "static/media/twitter2.gif": "/static/media/twitter2.2405bed1b6a45cf96690.gif",
+    "static/media/Flixster.jpg": "/static/media/Flixster.0e6a2f146e31533170be.jpg",
+    "static/media/Twitter.jpg": "/static/media/Twitter.bc488a470d2cd065a303.jpg",
+    "static/media/Quake2.jpg": "/static/media/Quake2.3e01f3452f317bbe05d5.jpg",
+    "static/media/Quake4.jpg": "/static/media/Quake4.fa224a8a7116a74db8ee.jpg",
+    "index.html": "/index.html",
+    "main.3272bd3c.css.map": "/static/css/main.3272bd3c.css.map",
+    "main.cc91bc96.js.map": "/static/js/main.cc91bc96.js.map",
+    "496.cee00f11.chunk.js.map": "/static/js/496.cee00f11.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3272bd3c.css",
+    "static/js/main.cc91bc96.js"
+  ]
+}
