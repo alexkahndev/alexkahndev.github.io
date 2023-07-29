@@ -1,7 +1,19 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
-  
+  const location = useLocation();
+  const hideHeaderOnPaths = ['/']; // Add paths where you want to hide the header
+
+  // Function to check if the header should be hidden on the current path
+  const shouldHideHeader = hideHeaderOnPaths.includes(location.pathname);
+
+  // Return null to hide the header if shouldHideHeader is true
+  if (shouldHideHeader) {
+    return null;
+  }
+
+  // Your existing header content and navigation links
   return (
     <div className="app-header">
       <div className="app-header-lhs">
