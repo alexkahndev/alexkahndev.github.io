@@ -14,7 +14,7 @@ const ProjectsPage = () => {
       orthographic={true}
       dpr={window.devicePixelRatio}
     >
-      <OldBackground />
+      <ProjectsBackground />
     </Canvas>
     </div>
   );

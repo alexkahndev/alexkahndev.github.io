@@ -13,9 +13,9 @@ import DynamicSky from '../three/skies/DynamicSky';
 import { Environment, PerspectiveCamera } from '@react-three/drei';
 import DynamicLight from '../three/lights/DynamicLight';
 import AmbientLight from '../three/lights/AmbientLight';
+import FixedCamera from '../three/cameras/HomeCamera';
 import { DaySky } from '../three/skies/DaySky';
 import { OrbitControls } from '@react-three/drei';
-
 import '../../styles/HomePage.css';
 
 const HomeSceneFiber = ({ museumHoveredRef }) => {
@@ -29,13 +29,7 @@ const HomeSceneFiber = ({ museumHoveredRef }) => {
           enableZoom={true}
           enablePan={false}
         />
-        <PerspectiveCamera
-          makeDefault // Makes this camera the default one
-          position={[0, 50, 50]}
-          fov={45}
-          near={0.1}
-          far={1000}
-        />
+        <FixedCamera />
         <Environment preset='sunset' />
         <DaySky />
         <PointLight />

@@ -1,46 +1,22 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { PerspectiveCamera } from '@react-three/drei';
+import { useThree } from '@react-three/fiber';
 
 const FixedCamera = () => {
-  const cameraPosition = [0, 500, 800];
-  const lookAtPosition = [0, 0, 0];
+  const { size } = useThree();
+  const aspect = size.width / size.height;
+  const distance = 50; // Adjust this value to control the camera distance from the scene
 
-  // Define a reference to the camera
-  const cameraRef = useRef();
-
-  // Function to handle window resize and update camera aspect ratio
-  const handleResize = () => {
-    const { current: camera } = cameraRef;
-    if (camera) {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-    }
-  };
-
-  // Use useEffect to add and remove window resize event listener
-  useEffect(() => {
-    handleResize(); // Call the function to update the aspect ratio on initial render
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Update the camera's lookAt position whenever it changes
-    cameraRef.current.lookAt(lookAtPosition[0], lookAtPosition[1], lookAtPosition[2]);
-  }, [lookAtPosition]);
+  // Calculate the camera's position based on the screen size and aspect ratio
+  const position = [0, 50, distance / aspect];
 
   return (
     <PerspectiveCamera
-      ref={cameraRef} // Assign the camera reference to the ref
-      makeDefault
+      makeDefault // Makes this camera the default one
+      position={position}
       fov={45}
-      aspect={window.innerWidth / window.innerHeight}
-      near={1}
-      far={10000}
-      position={cameraPosition}
+      near={0.1}
+      far={1000}
     />
   );
 };
