@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { Gltf } from '@react-three/drei';
 import { useSpring, a } from '@react-spring/three';
 import * as THREE from 'three';
 import { useNavigate } from 'react-router-dom';
 
-const MailboxModel = () => {
+/*
+const MailboxModelOld = () => {
   const url = './resources/props/mailbox.glb';
   const desiredSize = 35;
   //const name = 'mailbox';
@@ -94,6 +95,23 @@ const MailboxModel = () => {
       onPointerOut={handleMouseLeave}
       {...hoverProps} // Apply the scale animation to the group
     />
+  );
+};
+*/
+
+
+const MailboxModel = () => {
+  const modelSrc = './resources/props/mailbox.glb';
+
+  // Set the desired scale, position, and rotation values
+  const scale = [100, 100, 100]; // Make the model twice as large in all directions
+  const position = [2, 4, -12]; // Move the model to the specified position
+  const rotation = [0, 0.2, 0]; // Rotate the model around the Y-axis by -0.5 radians (around 180 degrees)
+
+  return (
+    <mesh>
+      <Gltf src={modelSrc} scale={scale} position={position} rotation={rotation} receiveShadow castShadow />
+    </mesh>
   );
 };
 

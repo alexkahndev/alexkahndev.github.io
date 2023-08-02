@@ -1,6 +1,7 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import ProjectsBackground from '../backgrounds/ProjectsBackground';
+import OldBackground from '../backgrounds/ProjectsBackgroundOld'
 import RainbowBackground from '../backgrounds/RainbowBackground';
 import KaleidoscopeBackground from '../backgrounds/KaleidoscopeBackground';
 
@@ -13,7 +14,7 @@ const ProjectsPage = () => {
       orthographic={true}
       dpr={window.devicePixelRatio}
     >
-      <KaleidoscopeBackground />
+      <OldBackground />
     </Canvas>
     </div>
   );

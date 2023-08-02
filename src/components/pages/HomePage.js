@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import GroundModel from '../three/models/GroundModel';
-import MuseumModel from '../three/models/MuseumModel';
+import TowerModel from '../three/models/TowerModel';
 import BoatModel from '../three/models/BoatModel';
 import MailboxModel from '../three/models/MailboxModel';
 import MineModel from '../three/models/MineModel';
@@ -28,11 +28,13 @@ const HomeSceneFiber = ({ museumHoveredRef }) => {
         <OrbitControls 
           enableZoom={true}
           enablePan={false}
-          minDistance={50}
-          target={[0, 0, 0]} 
-          position={[0, 500, 500]}
-          autoRotate={false} 
-          autoRotateSpeed={0.5} 
+        />
+        <PerspectiveCamera
+          makeDefault // Makes this camera the default one
+          position={[0, 50, 50]}
+          fov={45}
+          near={0.1}
+          far={1000}
         />
         <Environment preset='sunset' />
         <DaySky />
@@ -40,7 +42,7 @@ const HomeSceneFiber = ({ museumHoveredRef }) => {
         <DirectionalLight />
         <GroundModel />
         <PlaneModel />
-        <MuseumModel />
+        <TowerModel />
   
         {/* Add other models here */}
 
