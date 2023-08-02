@@ -7,12 +7,10 @@ import MailboxModel from '../three/models/MailboxModel';
 import MineModel from '../three/models/MineModel';
 import PlaneModel from '../three/models/PlaneModel';
 import PointLight from '../three/lights/PointLight';
-import MuseumTestModel from '../three/models/MuseumModelTest';
+import LightHouseModel from '../three/models/LighthouseModel';
 import DirectionalLight from '../three/lights/DirectionalLight';
 import DynamicSky from '../three/skies/DynamicSky';
 import { Environment, PerspectiveCamera } from '@react-three/drei';
-import DynamicLight from '../three/lights/DynamicLight';
-import AmbientLight from '../three/lights/AmbientLight';
 import FixedCamera from '../three/cameras/HomeCamera';
 import { DaySky } from '../three/skies/DaySky';
 import { OrbitControls } from '@react-three/drei';
@@ -36,6 +34,9 @@ const HomeSceneFiber = ({ museumHoveredRef }) => {
         <DirectionalLight />
         <GroundModel />
         <PlaneModel />
+        <BoatModel />
+        <LightHouseModel />
+        <MineModel />
         <TowerModel />
   
         {/* Add other models here */}

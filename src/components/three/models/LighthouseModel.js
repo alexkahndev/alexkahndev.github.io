@@ -3,15 +3,15 @@ import { Gltf } from '@react-three/drei';
 import { useSpring, animated } from '@react-spring/three';
 import { useNavigate } from 'react-router-dom';
 
-const MineModel = () => {
+const LightHouseModel = () => {
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
   const navigate = useNavigate();
-  const modelSrc = './resources/props/mine.glb';
+  const modelSrc = './resources/props/lighthouse.glb';
 
   // Set the desired scale, position, and rotation values
-  const scale = [ 6, 6, 6]; // Make the model three times as large in all directions
-  const position = [-5, 2.5, -7]; // Move the model to the specified position
+  const scale = [0.5, 0.5, 0.5]; // Make the model three times as large in all directions
+  const position = [-3, 3.75,2.5]; // Move the model to the specified position
   const rotation = [0, 0, 0]; // No rotation on the Y-axis
 
   const hoverProps = useSpring({
@@ -47,4 +47,4 @@ const MineModel = () => {
   );
 };
 
-export default MineModel;
+export default LightHouseModel;

@@ -5,31 +5,8 @@ import ProjectsPage from './components/pages/ProjectsPage';
 import HomePage from './components/pages/HomePage';
 import ModelViewerPage from './components/pages/ModelViewerPage';
 import BackgroundViewerPage from './components/pages/BackgroundViewerPage';
-
+import Footer from './components/utils/Footer';
 import './styles/App.css';
-
-const Footer = () => {
-  return (
-    <div className="footer">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/projects">Projects</Link>
-          </li>
-          <li>
-            <Link to="/model-viewer">Model Viewer</Link>
-          </li>
-          <li>
-            <Link to="/background-viewer">Background Viewer</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  );
-};
 
 const App = () => {
   const [pageTitle, setPageTitle] = useState('');

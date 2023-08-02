@@ -1,84 +1,49 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { useSpring, a } from '@react-spring/three';
+import React, {useState} from 'react';
+import { Gltf } from '@react-three/drei';
+import { useSpring, animated } from '@react-spring/three';
 import { useNavigate } from 'react-router-dom';
 
 const BoatModel = () => {
-  const url = './resources/props/boat.glb';
-  const scale = 25;
-  const name = 'boat';
+  const [hovered, setHovered] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const navigate = useNavigate();
+  const modelSrc = './resources/props/boat.glb';
 
-  const [modelLoaded, setModelLoaded] = useState(false);
-  //const gltf = useLoader(GLTFLoader, url);
-  const modelRef = useRef();
-  const boatRef = useRef();
-  const [hovered, setHovered] = useState(false); // State for hover effect
-  const navigate = useNavigate(); // Use navigate hook for routing
-
-  useEffect(() => {
-    // Load the model asynchronously using GLTFLoader
-    new GLTFLoader().load(url, (gltf) => {
-      // Set the scale of the model
-      gltf.scene.scale.set(scale, scale, scale);
-      gltf.scene.name = name;
-
-      // Set shadow properties for all child meshes
-      gltf.scene.traverse((child) => {
-        if (child.isMesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
-        }
-      });
-
-      modelRef.current = gltf.scene;
-      setModelLoaded(true); // Set the modelLoaded state to true when the model is loaded
-    });
-  }, []);
-
-  const springConfig = {
-    hoverScale: hovered ? 1.2 : 1.0, // Adjusted to 1.1 for a slightly larger growth
-    config: { mass: 1, tension: 280, friction: 60 },
-  };
+  // Set the desired scale, position, and rotation values
+  const scale = [2, 2, 2]; // Make the model twice as large in all directions
+  const position = [-5,2.5,7]; // Move the model to the specified position
+  const rotation = [0, 0, 0]; // Rotate the model around the Y-axis by -0.5 radians (around 180 degrees)
 
   const hoverProps = useSpring({
-    scale: [springConfig.hoverScale, springConfig.hoverScale, springConfig.hoverScale],
-    config: springConfig.config,
+    position: hovered ? [position[0], position[1] + 0.2, position[2]] : position,
+    scale: hovered ? [1.1, 1.1, 1.1] : [1, 1, 1],
+    config: { mass: 1, tension: 280, friction: 60 },
   });
 
-  useEffect(() => {
-    if (modelLoaded && boatRef.current && modelRef.current) {
-      boatRef.current.add(modelRef.current);
-      boatRef.current.position.set(-200, 75, 200);
-      boatRef.current.rotation.y = Math.PI * 2 / 3 + 0.5; // Set the initial rotation
-    }
-  }, [modelLoaded]);
-
+  // Set the navigate function
   const handleClick = () => {
-    // Navigate to the about page (replace '/about' with the actual path to your about page)
-    navigate('/about');
+    // Navigate to the projects page (replace '/projects' with the actual path to your projects page)
+    //navigate('/about');
+    setClicked(!clicked);
   };
 
-  const handleMouseEnter = () => {
-    setHovered(true);
+  const handlePointerEnter = () => {
+      setHovered(true);
   };
-
-  const handleMouseLeave = () => {
-    setHovered(false);
+  
+  const handlePointerLeave = () => {
+      setHovered(false);
   };
-
-  if (!modelLoaded) {
-    // You can render a loading indicator here while the model is loading
-    return null;
-  }
 
   return (
-    <a.group
-      ref={boatRef}
-      onClick={handleClick} // Add click handler to navigate to the about page
-      onPointerOver={handleMouseEnter}
-      onPointerOut={handleMouseLeave}
-      {...hoverProps} // Apply the scale animation to the group
-    />
+    <animated.mesh 
+      onClick={handleClick} 
+      onPointerEnter={handlePointerEnter} 
+      onPointerLeave={handlePointerLeave}
+      {...hoverProps}
+    >
+      <Gltf src={modelSrc} scale={scale} position={position} rotation={rotation} receiveShadow castShadow />
+    </animated.mesh>
   );
 };
 
