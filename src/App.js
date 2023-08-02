@@ -1,11 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import ProjectsPage from './components/pages/ProjectsPage';
-import Header from './components/utils/Header.js';
 import HomePage from './components/pages/HomePage';
-import Footer from './components/utils/Footer.js';
+import ModelViewerPage from './components/pages/ModelViewerPage';
+import BackgroundViewerPage from './components/pages/BackgroundViewerPage';
+
 import './styles/App.css';
+
+const Footer = () => {
+  return (
+    <div className="footer">
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/projects">Projects</Link>
+          </li>
+          <li>
+            <Link to="/model-viewer">Model Viewer</Link>
+          </li>
+          <li>
+            <Link to="/background-viewer">Background Viewer</Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  );
+};
 
 const App = () => {
   const [pageTitle, setPageTitle] = useState('');
@@ -15,14 +39,30 @@ const App = () => {
   }, [pageTitle]);
 
   return (
-    <div className="app-container">
+    <div>
       <HelmetProvider>
-        <div className="main-content">
-          <Routes>
-            <Route path="/" element={<HomePage setPageTitle={setPageTitle} />} />
-            <Route path="/projects" element={<ProjectsPage setPageTitle={setPageTitle}/>}  />
-          </Routes>
-        </div>
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage setPageTitle={setPageTitle} />}
+          />
+          <Route
+            path="/projects"
+            element={<ProjectsPage setPageTitle={setPageTitle} />}
+          />
+
+          <Route
+            path="/model-viewer"
+            element={<ModelViewerPage setPageTitle={setPageTitle} />}
+          />
+
+          <Route
+            path="/background-viewer"
+            element={<BackgroundViewerPage setPageTitle={setPageTitle} />}
+          />
+          
+        </Routes>
+        <Footer />
       </HelmetProvider>
     </div>
   );

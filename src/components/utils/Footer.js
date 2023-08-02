@@ -1,44 +1,68 @@
 import React, { useRef } from 'react';
-import { useFrame, Canvas } from '@react-three/fiber';
-import { Box } from '@react-three/drei';
-import * as THREE from 'three';
-import GradientFooterShader from '../three/shaders/GradientFooterShader';
-const Footer = () => {
-  const ref = useRef();
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrthographicCamera, Plane } from '@react-three/drei';
+import { ShaderMaterial } from '@react-three/drei';
+import { Vector3 } from 'three'; // Import THREE's Vector3
 
+const Footer = () => {
+  const planeRef = useRef();
+
+  return (
+    <group>
+      <OrthographicCamera makeDefault position={[0, 0, 10]} zoom={20} />
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
+
+      {/* Background plane with color gradient */}
+      <GradientPlane ref={planeRef} />
+    </group>
+  );
+};
+
+const GradientPlane = React.forwardRef((props, ref) => {
+  const material = useRef();
+
+  // Animation loop
   useFrame(({ clock }) => {
-    // Update the time uniform for the shader material every frame
-    if (ref.current.material) {
-      ref.current.material.uniforms.time.value = clock.elapsedTime;
+    if (material.current) {
+      const time = clock.getElapsedTime();
+      const color = [
+        Math.sin(time * 0.4) * 0.5 + 0.5,
+        Math.cos(time * 0.3) * 0.5 + 0.5,
+        Math.sin(time * 0.7) * 0.5 + 0.5,
+      ];
+      material.current.uniforms.uColor.value.set(...color);
     }
   });
 
-  
   return (
-    <group ref={ref}>
-      <Box args={[8, 2, 1]}>
-        {/* Apply the gradient material to the box */}
-        <mesh>
-          <primitive object={GradientFooterShader} attach="material" />
-        </mesh>
-      </Box>
-      {/* Add other 3D elements as needed */}
-    </group>
-  )
+    <Plane scale={[window.innerWidth,window.innerHeight,1]} ref={ref} {...props}>
+      <shaderMaterial
+        ref={material}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uniforms={{
+          uColor: { value: new Vector3(1, 1, 1) },
+        }}
+      />
+    </Plane>
+  );
+});
 
-  return (
-    <div className="footer-container">
-      <Canvas>
-        <color attach="background" args={['black']} />
-        <Box args={[8, 2, 1]}>
-          {/* Apply the gradient material to the box */}
-          <mesh>
-            <primitive object={GradientFooterShader} attach="material" />
-          </mesh>
-        </Box>
-      </Canvas>
-    </div>
-  )
-};
+const vertexShader = `
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+const fragmentShader = `
+  uniform vec3 uColor;
+  varying vec2 vUv;
+  void main() {
+    gl_FragColor = vec4(uColor, 1.0);
+  }
+`;
 
 export default Footer;
