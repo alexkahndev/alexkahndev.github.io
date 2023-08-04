@@ -41,23 +41,31 @@ const fragmentShader = `
     d += sin(d * d * 8.0) * 0.52;
     f = (sin(a * g) + 1.0) / 2.0;
 
-    // Define the color gradients with shades of blue, purple, and red
-    vec3 color1 = vec3(0.2, 0.4, 0.8);  // Deep Blue
-    vec3 color2 = vec3(0.4, 0.2, 0.8);  // Purple
-    vec3 color3 = vec3(0.8, 0.2, 0.2);  // Red
-    vec3 color4 = vec3(0.2, 0.6, 0.8);  // Light Blue
 
+    // Define the color gradients with all pastels and the main as light blue
+    vec3 baseColor = vec3(0.6, 0.7, 0.8);    // Light Blue (Base)
+    vec3 color1 = vec3(0.8, 0.9, 0.95);      // Soft Pastel Blue
+    vec3 color2 = vec3(0.9, 0.8, 0.85);      // Soft Pastel Purple
+    vec3 color3 = vec3(0.95, 0.85, 0.8);     // Soft Pastel Pink
+    vec3 color4 = vec3(0.95, 0.8, 0.85);     // Soft Pastel Red
+    vec3 color5 = vec3(0.9, 0.95, 0.8);      // Soft Pastel Green
+  
     // Mix the colors based on the value of i
     vec3 finalColor;
-    if (i < 1.0)
-      finalColor = mix(color1, color2, i);
-    else if (i < 2.0)
-      finalColor = mix(color2, color3, i - 1.0);
-    else if (i < 3.0)
-      finalColor = mix(color3, color4, i - 2.0);
+    if (i < 0.2)
+      finalColor = mix(baseColor, color1, i * 5.0);
+    else if (i < 0.4)
+      finalColor = mix(color1, color2, (i - 0.2) * 5.0);
+    else if (i < 0.6)
+      finalColor = mix(color2, color3, (i - 0.4) * 5.0);
+    else if (i < 0.8)
+      finalColor = mix(color3, color4, (i - 0.6) * 5.0);
     else
-      finalColor = mix(color4, color1, i - 3.0);
-
+      finalColor = mix(color4, color5, (i - 0.8) * 5.0);
+  
+    // Reduce intensity of colors by multiplying with a lower value (e.g., 0.5)
+    finalColor *= 0.6;
+  
     gl_FragColor = vec4(finalColor * d * p.x + finalColor * d * (1.0 - p.x), 1.0);
   }
 `;

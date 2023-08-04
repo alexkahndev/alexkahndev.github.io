@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 import { extend } from "@react-three/fiber";
-import AnimatedRippleMaterial from "../three/materials/AnimatedRippleMaterial";
+import AmericaMaterial from "../three/materials/AmericaMaterial";
 
-extend({ AnimatedRippleMaterial });
+extend({ AmericaMaterial });
 
-const ProjectsBackground = () => {
+const AmericanBackground = () => {
   const mesh = useRef();
   const { size } = useThree();
 
@@ -16,9 +16,9 @@ const ProjectsBackground = () => {
   return (
     <mesh ref={mesh}>
       <planeGeometry args={[size.width, size.height]} />
-      <animatedRippleMaterial uResolution={[size.width,size.height,1]}/>
+      <americaMaterial resolution={[size.width,size.height]}/>
     </mesh>
   );
 };
 
-export default ProjectsBackground;
+export default AmericanBackground;
