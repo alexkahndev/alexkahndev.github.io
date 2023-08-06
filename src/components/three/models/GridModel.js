@@ -5,7 +5,7 @@ import React from "react";
 
 const GridModel = () => {
   const { size } = useThree();
-  const resolution = 10;
+  const resolution = 20;
 
   // Calculate the number of rows and columns based on the aspect ratio
   const numCells = Math.max(Math.floor(Math.min(size.width, size.height) / resolution), 1);
@@ -29,14 +29,14 @@ const GridModel = () => {
     let startPoint = new Vector3(rowStart, i * adjustedCellHeight + colStart, 0);
     let endPoint = new Vector3(rowEnd, i * adjustedCellHeight + colStart, 0);
 
-    grid.push(<Line key={`row-${i}`} points={[startPoint, endPoint]} color="black" />);
+    grid.push(<Line key={`row-${i}`} points={[startPoint, endPoint]} color="white" />);
   }
 
   for (let i = 0; i < cols; i++) {
     let startPoint = new Vector3(i * adjustedCellWidth + rowStart, colStart, 0);
     let endPoint = new Vector3(i * adjustedCellWidth + rowStart, colEnd, 0);
 
-    grid.push(<Line key={`col-${i}`} points={[startPoint, endPoint]} color="black" />);
+    grid.push(<Line key={`col-${i}`} points={[startPoint, endPoint]} color="white" />);
   }
 
   return <mesh>{grid}</mesh>;

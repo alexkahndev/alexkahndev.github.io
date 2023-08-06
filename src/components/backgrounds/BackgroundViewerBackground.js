@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useThree, useFrame } from "@react-three/fiber";
+import { useThree, useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
 
 const BackgroundViewerBackground = () => {
@@ -8,7 +8,7 @@ const BackgroundViewerBackground = () => {
   return (
     <mesh>
         <planeGeometry args={[size.width, size.height]} />
-        <meshBasicMaterial color="white" side={THREE.DoubleSide}/>
+        <meshBasicMaterial color="black" side={THREE.DoubleSide}/>
     </mesh>
   );
 };

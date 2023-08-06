@@ -6,7 +6,7 @@ const FixedPerspectiveCamera = () => {
   const { size } = useThree();
   const aspect = size.width / size.height;
   // Calculate the camera's position based on the screen size and aspect ratio
-  const position = [0, 0, aspect];
+  const position = [0, 0, 1500/aspect];
 
   return (
     <PerspectiveCamera
