@@ -1,23 +1,33 @@
-import { extend } from '@react-three/fiber';
-// ... other imports
+import simulationVertexShader from './simulationVertexShader';
+import simulationFragmentShader from './simulationFragmentShader';
+import * as THREE from "three";
 
-const generatePositions = (width, height) => {
+const getRandomData = (width, height) => {
   // we need to create a vec4 since we're passing the positions to the fragment shader
   // data textures need to have 4 components, R, G, B, and A
-  const length = width * height * 4;
+  const length = width * height * 4 
   const data = new Float32Array(length);
+    
+  for (let i = 0; i < length; i++) {
+    const stride = i * 4;
 
-  // Fill Float32Array here
+    const distance = Math.sqrt(Math.random()) * 2.0;
+    const theta = THREE.MathUtils.randFloatSpread(360); 
+    const phi = THREE.MathUtils.randFloatSpread(360); 
 
+    data[stride] =  distance * Math.sin(theta) * Math.cos(phi)
+    data[stride + 1] =  distance * Math.sin(theta) * Math.sin(phi);
+    data[stride + 2] =  distance * Math.cos(theta);
+    data[stride + 3] =  1.0; // this value will not have any impact
+  }
+  
   return data;
-};
+}
 
-// Create a custom simulation shader material
 class SimulationMaterial extends THREE.ShaderMaterial {
   constructor(size) {
-    // Create a Data Texture with our positions data
     const positionsTexture = new THREE.DataTexture(
-      generatePositions(size, size),
+      getRandomData(size, size),
       size,
       size,
       THREE.RGBAFormat,
@@ -26,8 +36,9 @@ class SimulationMaterial extends THREE.ShaderMaterial {
     positionsTexture.needsUpdate = true;
 
     const simulationUniforms = {
-      // Pass the positions Data Texture as a uniform
       positions: { value: positionsTexture },
+      uFrequency: { value: 0.25 },
+      uTime: { value: 0 },
     };
 
     super({
@@ -38,5 +49,4 @@ class SimulationMaterial extends THREE.ShaderMaterial {
   }
 }
 
-// Make the simulation material available as a JSX element in our canva
-extend({ SimulationMaterial: SimulationMaterial });
+export default SimulationMaterial;

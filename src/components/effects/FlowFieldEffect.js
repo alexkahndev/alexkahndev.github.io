@@ -3,44 +3,40 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { Line } from '@react-three/drei';
 import * as THREE from 'three';
 
-const red = [1, 0, 0];
-const orange = [1, 0.5, 0];
-const yellow = [1, 1, 0];
-const green = [0, 1, 0];
-const blue = [0, 0, 1];
-const purple = [0.5, 0, 0.5];
+const RED = [1, 0, 0];
+const ORANGE = [1, 0.5, 0];
+const YELLOW = [1, 1, 0];
+const GREEN = [0, 1, 0];
+const BLUE = [0, 0, 1];
+const PURPLE = [0.5, 0, 0.5];
 
-const pallete = [red, orange, yellow, green, blue, purple];
-const MAX_POINTS = 5;
-let count = 0;
-
+const PALLETE = [RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE];
+const PARTICLES = 1000;
+const MAX_POINTS = 100;
 
 const Particle = () => {
     const { size } = useThree();
 
-    let posX = Math.random() * size.width;
-    let posY = Math.random() * size.height;
-    let speedX = 1;
-    let speedY = 1;
-
-    let color = pallete[count % pallete.length];
-
+    const [posX, setPosX] = useState(Math.random() * size.width);
+    const [posY, setPosY] = useState(Math.random() * size.height);
+    const [speedX, setSpeedX] = useState(1);
+    const [speedY, setSpeedY] = useState(1);
+    const [count, setCount] = useState(0);
+    const [color, setColor] = useState(PALLETE[Math.floor(Math.random() * PALLETE.length)]);
     const [points, setPoints] = useState([new THREE.Vector3(posX, posY, 0)]);
     const [colors,setColors] = useState(color);
 
+    console.log("initialized particle at: " + posX + ", " + posY)
+
     useFrame(() => {
        
-        posX += speedX;
-        posY += speedY;
-        count += 1;
+        setPosX(posX + speedX);
+        setPosY(posY + speedY);
+        setCount(count + 1);
+        //setColor(PALLETE[count % PALLETE.length]);
 
-        if (posX < 0 || posX > size.width) {
-            speedX = -speedX;
-        }
-
-        if (posY < 0 || posY > size.height) {
-            speedY = -speedY;
-        }
+        setSpeedX(speedX + Math.random() * 0.2 - 0.1);
+        setSpeedY(speedY + Math.random() * 0.2 - 0.1);
 
         if(points.length > MAX_POINTS) {
             points.shift();
@@ -56,11 +52,10 @@ const Particle = () => {
             points={points} 
             color="white"
             vertexColors={colors}
-            lineWidth={size.width / size.height}
+            lineWidth={5}
         />
     );
 };
-
 
 const FlowFieldEffect = () => {
     const { size } = useThree();
@@ -86,7 +81,10 @@ const FlowFieldEffect = () => {
     const flowField = [];
     const lines = [];
 
-    lines.push(<Particle/>);
+    //lines.push(<Particle key="0"/>);
+    for(let i = 0; i < 50; i++) {
+        lines.push(<Particle key={i}/>);
+    }
     return <mesh>{lines}</mesh>;
 };
 

@@ -5,7 +5,7 @@ import GridModel from '../three/models/GridModel';
 import FixedOrthographicCamera from '../three/cameras/FixedOrthographicCamera';
 import FixedPerspectiveCamera from '../three/cameras/FixedPerspectiveCamera';
 import FlowFieldEffect from "../effects/FlowFieldEffect";
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Stats } from '@react-three/drei';
 
 import '../../styles/BackgroundViewerPage.css';
 const BackgroundViewerPage = () => {
@@ -40,6 +40,7 @@ const BackgroundViewerPage = () => {
       <BackgroundViewerBackground />
       {debugMode && <GridModel />}
       <FlowFieldEffect />
+      <Stats />
     </Canvas>
     </div>
   );
