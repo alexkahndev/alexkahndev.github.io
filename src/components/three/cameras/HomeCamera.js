@@ -8,7 +8,7 @@ const FixedCamera = () => {
   const distance = 50; // Adjust this value to control the camera distance from the scene
 
   // Calculate the camera's position based on the screen size and aspect ratio
-  const position = [0, 50, distance / aspect];
+  const position = [0, distance / aspect, distance / aspect];
 
   return (
     <PerspectiveCamera

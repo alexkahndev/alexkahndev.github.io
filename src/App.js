@@ -5,7 +5,10 @@ import ProjectsPage from './components/pages/ProjectsPage';
 import HomePage from './components/pages/HomePage';
 import ModelViewerPage from './components/pages/ModelViewerPage';
 import BackgroundViewerPage from './components/pages/BackgroundViewerPage';
-import Footer from './components/utils/Footer';
+import AboutPage from './components/pages/AboutPage';
+import ContactPage from './components/pages/ContactPage';
+import DevelopmentPage from './components/pages/DevelopmentPage';
+import BlogPage from './components/pages/BlogPage'
 import './styles/App.css';
 
 const App = () => {
@@ -36,6 +39,26 @@ const App = () => {
           <Route
             path="/background-viewer"
             element={<BackgroundViewerPage setPageTitle={setPageTitle} />}
+          />
+
+          <Route
+            path="/about"
+            element={<AboutPage setPageTitle={setPageTitle} />}
+          />
+
+          <Route
+            path="/contact"
+            element={<ContactPage setPageTitle={setPageTitle} />}
+          />
+
+          <Route
+            path="/development"
+            element={<DevelopmentPage setPageTitle={setPageTitle} />}
+          />
+
+          <Route
+            path="/blog"
+            element={<BlogPage setPageTitle={setPageTitle} />}
           />
           
         </Routes>

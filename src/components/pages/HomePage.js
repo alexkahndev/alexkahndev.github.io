@@ -6,6 +6,7 @@ import BoatModel from '../three/models/BoatModel';
 import MailboxModel from '../three/models/MailboxModel';
 import MineModel from '../three/models/MineModel';
 import PlaneModel from '../three/models/PlaneModel';
+import DockModel from '../three/models/DockModel';
 import PointLight from '../three/lights/PointLight';
 import LightHouseModel from '../three/models/LighthouseModel';
 import DirectionalLight from '../three/lights/DirectionalLight';
@@ -26,6 +27,8 @@ const HomeSceneFiber = ({ museumHoveredRef }) => {
         <OrbitControls 
           enableZoom={true}
           enablePan={false}
+          target={[0,0,0]}
+          minDistance={75}
         />
         <FixedCamera />
         <Environment preset='sunset' />
@@ -38,6 +41,7 @@ const HomeSceneFiber = ({ museumHoveredRef }) => {
         <LightHouseModel />
         <MineModel />
         <TowerModel />
+        <DockModel />
   
         {/* Add other models here */}
 

@@ -23,7 +23,7 @@ const LightHouseModel = () => {
   // Set the navigate function
   const handleClick = () => {
     // Navigate to the mailbox page (replace '/mailbox' with the actual path to your mailbox page)
-    navigate('/background-viewer');
+    navigate('/contact');
     setClicked(!clicked);
   };
 

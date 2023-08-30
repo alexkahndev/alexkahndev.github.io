@@ -8,7 +8,7 @@ const ProjectsPageCamera = () => {
 
     useEffect(() => {
         // The following lines help improve the orbit controls behavior
-        camera.position.set(0,0,500);
+        camera.position.set(0,0,0);
         camera.lookAt(0, 0, 0); // Point the camera towards the origin where your island is located
 
         const handleResize = () => {

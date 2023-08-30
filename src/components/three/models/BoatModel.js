@@ -23,7 +23,7 @@ const BoatModel = () => {
   // Set the navigate function
   const handleClick = () => {
     // Navigate to the projects page (replace '/projects' with the actual path to your projects page)
-    //navigate('/about');
+    navigate('/about');
     setClicked(!clicked);
   };
 
