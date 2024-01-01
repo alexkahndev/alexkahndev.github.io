@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import * as THREE from 'three';
-import { useFrame } from '@react-three/fiber';
+import React, { useRef } from "react";
+import * as THREE from "three";
+import { useFrame } from "@react-three/fiber";
 
 const BackgroundShader = () => {
   const planeRef = useRef();

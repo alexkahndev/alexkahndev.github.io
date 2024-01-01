@@ -1,7 +1,7 @@
 import { shaderMaterial } from "@react-three/drei";
 
 const uniforms = {
-    time: 0
+  time: 0,
 };
 
 const vertexShader = `
@@ -77,4 +77,3 @@ const AnimatedRippleMaterial = shaderMaterial(
 );
 
 export default AnimatedRippleMaterial;
-    

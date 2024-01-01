@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
-import { useThree, useFrame } from '@react-three/fiber';
-import { extend } from '@react-three/fiber';
-import { shaderMaterial } from '@react-three/drei';
-import { Vector3 } from 'three';
+import React, { useRef } from "react";
+import { useThree, useFrame } from "@react-three/fiber";
+import { extend } from "@react-three/fiber";
+import { shaderMaterial } from "@react-three/drei";
+import { Vector3 } from "three";
 
 const KaleidoscopeMaterial = shaderMaterial(
   {

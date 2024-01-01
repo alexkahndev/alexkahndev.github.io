@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import { useThree } from 'react-three-fiber';
-import { OrbitControls } from '@react-three/drei';
+import React, { useRef, useEffect } from "react";
+import { useThree } from "react-three-fiber";
+import { OrbitControls } from "@react-three/drei";
 
 const ExperimentalCamera = () => {
   const { camera, gl, size } = useThree();
@@ -18,8 +18,8 @@ const ExperimentalCamera = () => {
       camera.updateProjectionMatrix();
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [camera, gl]);
 
   return (
@@ -28,8 +28,8 @@ const ExperimentalCamera = () => {
       ref={controlsRef}
       enableZoom={true}
       enablePan={false}
-      minDistance={size.width * 0.5}  // Set the minimum distance to zoom in based on canvas width
-      maxDistance={size.width * 1.4}  // Set the maximum distance to zoom out based on canvas width
+      minDistance={size.width * 0.5} // Set the minimum distance to zoom in based on canvas width
+      maxDistance={size.width * 1.4} // Set the maximum distance to zoom out based on canvas width
       onUpdate={() => controlsRef.current && controlsRef.current.update()}
     />
   );

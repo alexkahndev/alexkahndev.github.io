@@ -7,8 +7,8 @@ const BackgroundViewerBackground = () => {
 
   return (
     <mesh>
-        <planeGeometry args={[size.width, size.height]} />
-        <meshBasicMaterial color="black" side={THREE.DoubleSide}/>
+      <planeGeometry args={[size.width, size.height]} />
+      <meshBasicMaterial color="black" side={THREE.DoubleSide} />
     </mesh>
   );
 };

@@ -7,11 +7,12 @@ const MuseumModel = () => {
     <group>
       {/* The rectangular box */}
       <Box
-      args={[2, 2, 4]} // Width, Height, Depth
-      position={[0, 1, 0]} // X, Y, Z position
-      rotation={[0, 0, 0]} // X, Y, Z rotation
+        args={[2, 2, 4]} // Width, Height, Depth
+        position={[0, 1, 0]} // X, Y, Z position
+        rotation={[0, 0, 0]} // X, Y, Z rotation
       >
-        <meshBasicMaterial color="red" /> {/* Replace with any highly visible color */}
+        <meshBasicMaterial color="red" />{" "}
+        {/* Replace with any highly visible color */}
       </Box>
 
       {/* The triangular pyramid acting as the roof */}
@@ -22,7 +23,6 @@ const MuseumModel = () => {
         color="blue" // Replace with any highly visible color
       />
     </group>
-      
   );
 };
 

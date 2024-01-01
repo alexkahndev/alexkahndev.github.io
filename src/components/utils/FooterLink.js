@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+import React, { useRef, useState } from "react";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 const FooterLink = ({ text, url }) => {
   const linkRef = useRef();
@@ -15,7 +15,7 @@ const FooterLink = ({ text, url }) => {
   };
 
   const handleLinkClick = () => {
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   useFrame(({ clock }) => {
@@ -25,7 +25,11 @@ const FooterLink = ({ text, url }) => {
   });
 
   return (
-    <group onPointerEnter={handleMouseEnter} onPointerLeave={handleMouseLeave} onClick={handleLinkClick}>
+    <group
+      onPointerEnter={handleMouseEnter}
+      onPointerLeave={handleMouseLeave}
+      onClick={handleLinkClick}
+    >
       <mesh ref={linkRef}>
         {/* Add the link label geometry */}
         <planeGeometry args={[1.5, 0.5]} />
@@ -33,8 +37,8 @@ const FooterLink = ({ text, url }) => {
           uniforms={{
             uTime: { value: 0.0 },
             hovered: { value: 0 },
-            color1: { value: new THREE.Color('#6eeeff') },
-            color2: { value: new THREE.Color('#1a66ff') },
+            color1: { value: new THREE.Color("#6eeeff") },
+            color2: { value: new THREE.Color("#1a66ff") },
           }}
           vertexShader={`
             uniform float uTime;

@@ -90,16 +90,17 @@ const DynamicLight = () => {
 
     // Get the current time of day
     const timeOfDay = getTimeOfDay();
-    const currentLightSettings = lightSettings[timeOfDay] || lightSettings.night;
+    const currentLightSettings =
+      lightSettings[timeOfDay] || lightSettings.night;
 
     // Update the light properties based on the current time of day
     if (lightRef.current && targetRef.current) {
-        lightRef.current.intensity = currentLightSettings.intensity;
-        lightRef.current.color.set(currentLightSettings.color);
-        lightRef.current.position.set(...currentLightSettings.position);
-        targetRef.current.position.set(...currentLightSettings.targetPosition);
-        setReady(true); // Set to true to indicate that the light properties are updated
-      }
+      lightRef.current.intensity = currentLightSettings.intensity;
+      lightRef.current.color.set(currentLightSettings.color);
+      lightRef.current.position.set(...currentLightSettings.position);
+      targetRef.current.position.set(...currentLightSettings.targetPosition);
+      setReady(true); // Set to true to indicate that the light properties are updated
+    }
   }, []);
 
   return (
@@ -123,7 +124,10 @@ const DynamicLight = () => {
         shadow-camera-bottom={-45}
         position={lightSettings.night.position}
       />
-      <primitive object={targetRef} position={lightSettings.night.targetPosition} />
+      <primitive
+        object={targetRef}
+        position={lightSettings.night.targetPosition}
+      />
     </>
   );
 };

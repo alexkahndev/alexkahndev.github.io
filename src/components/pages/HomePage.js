@@ -1,37 +1,46 @@
-import React, { useEffect } from 'react';
-import { Canvas, useThree } from '@react-three/fiber';
-import GroundModel from '../three/models/GroundModel';
-import TowerModel from '../three/models/TowerModel';
-import BoatModel from '../three/models/BoatModel';
-import MailboxModel from '../three/models/MailboxModel';
-import MineModel from '../three/models/MineModel';
-import PlaneModel from '../three/models/PlaneModel';
-import DockModel from '../three/models/DockModel';
-import PointLight from '../three/lights/PointLight';
-import LightHouseModel from '../three/models/LighthouseModel';
-import DirectionalLight from '../three/lights/DirectionalLight';
-import DynamicSky from '../three/skies/DynamicSky';
-import { Environment, PerspectiveCamera } from '@react-three/drei';
-import FixedCamera from '../three/cameras/HomeCamera';
-import { DaySky } from '../three/skies/DaySky';
-import { OrbitControls } from '@react-three/drei';
-import '../../styles/HomePage.css';
+import React, { useState, useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
+import GroundModel from "../three/models/GroundModel";
+import TowerModel from "../three/models/TowerModel";
+import BoatModel from "../three/models/BoatModel";
+import MineModel from "../three/models/MineModel";
+import PlaneModel from "../three/models/PlaneModel";
+import DockModel from "../three/models/DockModel";
+import PointLight from "../three/lights/PointLight";
+import LightHouseModel from "../three/models/LighthouseModel";
+import DirectionalLight from "../three/lights/DirectionalLight";
+import Footer from "../utils/Footer";
+import { Environment } from "@react-three/drei";
+import FixedCamera from "../three/cameras/HomeCamera";
+import { DaySky } from "../three/skies/DaySky";
+import { OrbitControls } from "@react-three/drei";
+import "../../styles/HomePage.css";
 
-const HomeSceneFiber = ({ museumHoveredRef }) => {
-  
+const HomeSceneFiber = () => {
+  const [preset, setPreset] = useState("apartment");
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour >= 0 && hour < 12) {
+      setPreset("dawn"); // Morning
+    } else if (hour >= 12 && hour < 18) {
+      setPreset("sunset"); // Noon
+    } else {
+      setPreset("night"); // Midnight
+    }
+  }, []);
+
   return (
-    <div className='home-page-container'>
-      <Canvas
-        dpr={window.devicePixelRatio}
-      >
-        <OrbitControls 
+    <div className="home-page-container">
+      <Canvas dpr={window.devicePixelRatio}>
+        <OrbitControls
           enableZoom={true}
           enablePan={false}
-          target={[0,0,0]}
-          minDistance={75}
+          target={[0, 0, 0]}
+          minDistance={0}
         />
         <FixedCamera />
-        <Environment preset='sunset' />
+        <Environment preset={preset} />
         <DaySky />
         <PointLight />
         <DirectionalLight />
@@ -42,9 +51,9 @@ const HomeSceneFiber = ({ museumHoveredRef }) => {
         <MineModel />
         <TowerModel />
         <DockModel />
-  
-        {/* Add other models here */}
+        <Footer />
 
+        {/* Add other models here */}
       </Canvas>
     </div>
   );

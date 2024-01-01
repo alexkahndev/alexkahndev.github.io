@@ -1,5 +1,5 @@
-import { useRef} from 'react';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useRef } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
 
 const vertexShader = `
   varying vec2 vUv;
@@ -73,7 +73,7 @@ const WaterEffect = () => {
 
   return (
     <mesh ref={waterRef}>
-      <planeGeometry args={[1000,1000]} />
+      <planeGeometry args={[1000, 1000]} />
       <shaderMaterial
         transparent
         uniforms={uniformsRef.current}
@@ -85,7 +85,6 @@ const WaterEffect = () => {
 };
 
 const ProjectsBackground = () => {
-  
   return (
     <group>
       <WaterEffect />

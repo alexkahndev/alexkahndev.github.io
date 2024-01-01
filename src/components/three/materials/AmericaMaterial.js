@@ -2,8 +2,8 @@ import { shaderMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
 const uniforms = {
-    uTime: 0,
-    uResolution: { value: new THREE.Vector2() }
+  uTime: 0,
+  uResolution: { value: new THREE.Vector2() },
 };
 
 const vertexShader = `
@@ -77,11 +77,6 @@ void main() {
 
 `;
 
-const AmericaMaterial = shaderMaterial(
-  uniforms,
-  vertexShader,
-  fragmentShader
-);
+const AmericaMaterial = shaderMaterial(uniforms, vertexShader, fragmentShader);
 
 export default AmericaMaterial;
-    

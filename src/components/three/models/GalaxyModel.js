@@ -1,7 +1,7 @@
-import * as THREE from 'three';
-import { useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { Line } from '@react-three/drei';
+import * as THREE from "three";
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import { Line } from "@react-three/drei";
 
 const StarModel = ({ radius = 50, speed = 4, color = [1, 1, 1], ...props }) => {
   const ref = useRef();

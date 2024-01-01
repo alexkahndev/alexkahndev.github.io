@@ -1,6 +1,6 @@
-import React from 'react';
-import { OrthographicCamera } from '@react-three/drei';
-import { useThree } from '@react-three/fiber';
+import React from "react";
+import { OrthographicCamera } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 
 const FixedOrthographicCamera = () => {
   const { size } = useThree();

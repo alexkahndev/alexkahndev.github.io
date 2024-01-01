@@ -6,9 +6,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; 
+  overflow: hidden;
 }
-
 
 .home-page-container canvas {
   width: 100%;

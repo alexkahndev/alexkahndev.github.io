@@ -16,7 +16,7 @@ const ProjectsBackground = () => {
   return (
     <mesh ref={mesh}>
       <planeGeometry args={[size.width, size.height]} />
-      <animatedRippleMaterial/>
+      <animatedRippleMaterial />
     </mesh>
   );
 };

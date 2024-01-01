@@ -1,8 +1,8 @@
 // DynamicSky.js
 
-import React, { useRef } from 'react';
-import { Sky } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import React, { useRef } from "react";
+import { Sky } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 const DynamicSky = () => {
   const sunRef = useRef();

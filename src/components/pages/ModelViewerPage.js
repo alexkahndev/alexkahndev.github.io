@@ -1,31 +1,21 @@
-import React, { useEffect } from 'react';
-import { Canvas, useThree } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import GroundModel from '../three/models/GroundModel';
-import { DaySky } from '../three/skies/DaySky';
+import React, { useEffect, useState } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  Environment,
+} from "@react-three/drei";
+import { DaySky } from "../three/skies/DaySky";
 
-import '../../styles/ModelViewerPage.css';
+import ProjectTile from "../utils/ProjectTile";
+
+import "../../styles/ModelViewerPage.css";
 
 const ModelViewerPage = () => {
-
   return (
-    <div className='model-viewer-page-container'>
-      <Canvas
-        dpr={window.devicePixelRatio}
-      >
-        <ambientLight intensity={0.5} />
-        <directionalLight
-          castShadow // Enable shadow casting
-          position={[10, 20, 10]}
-          intensity={1}
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-          shadow-camera-far={50}
-          shadow-camera-left={-10}
-          shadow-camera-right={10}
-          shadow-camera-top={10}
-          shadow-camera-bottom={-10}
-        />
+    <div className="model-viewer-page-container">
+      <Canvas dpr={window.devicePixelRatio}>
+        <Environment preset="apartment" />
 
         <PerspectiveCamera
           makeDefault // Makes this camera the default one
@@ -35,14 +25,21 @@ const ModelViewerPage = () => {
           far={1000}
         />
 
-        <OrbitControls 
+        <OrbitControls
           dampingFactor={0.1}
+          enableZoom={true}
+          enablePan={false}
+          target={[0, 0, 0]}
+          minDistance={0}
         />
         <DaySky />
-        <GroundModel />
-  
-        {/* Add other models here */}
 
+        {/* Add model here */}
+        <ProjectTile
+          gameImage="https://i.imgur.com/7p5k2zL.jpg"
+          gameTitle="Project Title"
+          gameDescription="Project Description"
+        />
       </Canvas>
     </div>
   );
