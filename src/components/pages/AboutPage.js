@@ -15,8 +15,7 @@ const AboutPage = () => {
         <OrbitControls
           enableZoom={true}
           enablePan={false}
-          target={[-75, 0, 0]}
-          minDistance={100}
+          minDistance={50}
         />
         <Environment preset="sunset" />
         <WaterSky />

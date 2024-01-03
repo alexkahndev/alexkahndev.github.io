@@ -1,32 +1,48 @@
-import React, { useRef } from "react";
-import { RoundedBox, useCubeTexture } from "@react-three/drei";
-import { extend, useFrame, useThree } from "@react-three/fiber";
-import FooterMaterial from "../three/materials/FooterMaterial";
-import { Vector2 } from "three";
-import * as THREE from "three";
+import React from 'react';
 
-extend({ FooterMaterial });
+import '../../styles/Footer.css';
 
-const Footer = () => {
-  const { size } = useThree();
-  const footerMaterialRef = useRef(); // Reference to the custom material
-
-  useFrame((state, delta) => {
-    if (footerMaterialRef.current) {
-      footerMaterialRef.current.u_time += delta; // Increment u_time
-    }
-  });
-
-  return (
-    <mesh position={[0, 0, 25]}>
-      <boxGeometry args={[50, 5, 5]} />
-      <footerMaterial
-        ref={footerMaterialRef}
-        u_time={0.0}
-        side={THREE.DoubleSide}
-      />
-    </mesh>
-  );
+const Footer = ({ 
+        colorScheme,
+        projectsHovered,
+        setProjectsHovered,
+        developmentHovered,
+        setDevelopmentHovered,
+        aboutHovered,
+        setAboutHovered,
+        contactHovered,
+        setContactHovered
+    }) => {
+    return (
+        <footer className={colorScheme}>
+            <a href="/">Home</a>
+            <a 
+                href="/projects" 
+                className={projectsHovered ? 'hover' : ''}
+                onMouseEnter={() => setProjectsHovered(true)}
+                onMouseLeave={() => setProjectsHovered(false)}
+            >Projects</a>
+            <a 
+                href="/development" 
+                className={developmentHovered ? 'hover' : ''}
+                onMouseEnter={() => setDevelopmentHovered(true)}
+                onMouseLeave={() => setDevelopmentHovered(false)}
+            >Development</a>
+            <a 
+                href="/about" 
+                className={aboutHovered ? 'hover' : ''}
+                onMouseEnter={() => setAboutHovered(true)}
+                onMouseLeave={() => setAboutHovered(false)}
+            >About</a>
+            <a 
+                href="/contact" 
+                className={contactHovered ? 'hover' : ''}
+                onMouseEnter={() => setContactHovered(true)}
+                onMouseLeave={() => setContactHovered(false)}
+            >Contact</a>
+            <p>&copy; 2024 Alex Kahn. All rights reserved.</p>
+        </footer>
+    );
 };
 
 export default Footer;

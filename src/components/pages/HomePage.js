@@ -9,14 +9,19 @@ import DockModel from "../three/models/DockModel";
 import PointLight from "../three/lights/PointLight";
 import LightHouseModel from "../three/models/LighthouseModel";
 import DirectionalLight from "../three/lights/DirectionalLight";
-import Footer from "../utils/Footer";
 import { Environment } from "@react-three/drei";
 import FixedCamera from "../three/cameras/HomeCamera";
 import { DaySky } from "../three/skies/DaySky";
 import { OrbitControls } from "@react-three/drei";
+import Footer from "../utils/Footer";
 import "../../styles/HomePage.css";
 
-const HomeSceneFiber = () => {
+const HomeSceneFiber = (
+  { pageTitle, projectsHovered, setProjectsHovered,
+    developmentHovered, setDevelopmentHovered,
+    aboutHovered, setAboutHovered,
+    contactHovered, setContactHovered }
+) => {
   const [preset, setPreset] = useState("apartment");
 
   useEffect(() => {
@@ -46,14 +51,12 @@ const HomeSceneFiber = () => {
         <DirectionalLight />
         <GroundModel />
         <PlaneModel />
-        <BoatModel />
-        <LightHouseModel />
-        <MineModel />
-        <TowerModel />
-        <DockModel />
-        <Footer />
-
-        {/* Add other models here */}
+        <BoatModel aboutHovered={aboutHovered} setAboutHovered={setAboutHovered}/>
+        <LightHouseModel contactHovered={contactHovered} setContactHovered={setContactHovered}/>
+        <MineModel developmentHovered={developmentHovered} setDevelopmentHovered={setDevelopmentHovered} />
+        {/*<TowerModel projectsHovered={projectsHovered} setProjectsHovered={setProjectsHovered}/>*/}
+        <DockModel projectsHovered={projectsHovered} setProjectsHovered={setProjectsHovered}/>
+        
       </Canvas>
     </div>
   );

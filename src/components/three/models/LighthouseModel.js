@@ -3,8 +3,10 @@ import { Gltf } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 import { useNavigate } from "react-router-dom";
 
-const LightHouseModel = () => {
-  const [hovered, setHovered] = useState(false);
+const LightHouseModel = (
+  { contactHovered, setContactHovered }
+) => {
+ 
   const [clicked, setClicked] = useState(false);
   const navigate = useNavigate();
   const modelSrc = "./resources/props/lighthouse.glb";
@@ -15,10 +17,10 @@ const LightHouseModel = () => {
   const rotation = [0, 0, 0]; // No rotation on the Y-axis
 
   const hoverProps = useSpring({
-    position: hovered
+    position: contactHovered
       ? [position[0], position[1] + 0.2, position[2]]
       : position,
-    scale: hovered ? [1.1, 1.1, 1.1] : [1, 1, 1],
+    scale: contactHovered ? [1.1, 1.1, 1.1] : [1, 1, 1],
     config: { mass: 1, tension: 280, friction: 60 },
   });
 
@@ -27,14 +29,15 @@ const LightHouseModel = () => {
     // Navigate to the mailbox page (replace '/mailbox' with the actual path to your mailbox page)
     navigate("/contact");
     setClicked(!clicked);
+    setContactHovered(false);
   };
 
   const handlePointerEnter = () => {
-    setHovered(true);
+    setContactHovered(true);
   };
 
   const handlePointerLeave = () => {
-    setHovered(false);
+    setContactHovered(false);
   };
 
   return (

@@ -18,8 +18,8 @@ const ProjectsPage = () => {
         <OrbitControls
           enableZoom={true}
           enablePan={false}
-          target={[30, -25, -30]}
-          minDistance={100}
+          target={[0, 0, 0]}
+          minDistance={50}
         />
 
         <Environment preset="sunset" />
