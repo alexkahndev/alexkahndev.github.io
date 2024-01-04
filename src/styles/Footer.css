@@ -5,27 +5,27 @@
 }
 
 .green-scheme {
-  --primary-color: rgba(152,251,152,1); /* Pale Green */
-  --secondary-color: rgba(143,188,143,1); /* Dark Sea Green */
-  --tertiary-color: rgba(85,107,47,1); /* Dark Olive Green */
+  --primary-color: rgba(152,251,152,1); 
+  --secondary-color: rgba(143,188,143,1); 
+  --tertiary-color: rgba(85,107,47,1);
 }
 
 .pink-scheme {
-  --primary-color: rgba(255,0,255,1); /* Magenta */
-  --secondary-color: rgba(121,0,121,1); /* Medium Purple */
-  --tertiary-color: rgba(36,0,36,1); /* Dark Purple */
+  --primary-color: rgba(255,0,255,1);
+  --secondary-color: rgba(121,0,121,1); 
+  --tertiary-color: rgba(36,0,36,1);
 }
 
 .purple-scheme {
-  --primary-color: rgba(75,0,130,1); /* Indigo */
-  --secondary-color: rgba(128,0,128,1); /* Purple */
-  --tertiary-color: rgba(54,0,54,1); /* Dark Purple */
+  --primary-color: rgba(75,0,130,1);
+  --secondary-color: rgba(128,0,128,1); 
+  --tertiary-color: rgba(54,0,54,1);
 }
 
 .yellow-scheme {
-  --primary-color: rgba(210,180,140,1); /* Tan */
-  --secondary-color: rgba(222,184,135,1); /* Burlywood */
-  --tertiary-color: rgba(189,183,107,1); /* Dark Khaki */
+  --primary-color: rgba(210,180,140,1);
+  --secondary-color: rgba(222,184,135,1);
+  --tertiary-color: rgba(189,183,107,1);
 }
 
 footer {
@@ -38,8 +38,9 @@ footer {
   background: rgba(0,0,0,0.3);
   height: auto;
   color: white;
-  padding: 2vh;
+  padding: 2vmin;
   text-align: center;
+  font-size: 2vmin;
 }
 
 footer a,
@@ -47,15 +48,15 @@ footer a.hover {
   text-decoration: none;
   color: white;
   font-weight: bold;
-  font-size: 3vh;
+  font-size: 3vmin;
   position: relative;
   transition: all 0.5s, outline 0.5s ease-in-out; 
   display: inline-block;
-  margin: 0 3vw;
-  padding: 1vh 1vh;
+  margin: 0 3vmin;
+  padding: 1vmin 1vmin;
   background-color: rgba(0,0,0,0.5);
-  border-radius: 10px;
-  outline: 2px solid white;
+  border-radius: 2vmin;
+  outline: 0.5vmin solid white;
   overflow: hidden;
 }
 
@@ -64,8 +65,8 @@ footer a.hover:before {
   content: "";
   position: absolute;
   width: 0;
-  height: 0.4vh;
-  bottom: -0.4vh;
+  height: 0.4vmin;
+  bottom: -0.4vmin;
   left: 0;
   background: transparent;
   visibility: hidden;
@@ -81,10 +82,10 @@ footer a.hover:before {
 
 footer a:hover,
 footer a.hover {
-  text-shadow: 0.2vh 0.2vh 0.8vh var(--primary-color);
-  text-shadow: 0.4vh 0.4vh 1.2vh var(--secondary-color);
-  outline: 2px solid transparent; 
-  box-shadow: 0 0 0 2px var(--primary-color), 0 0 0 4px var(--secondary-color);
+  text-shadow: 0.2vmin 0.2vmin 0.8vmin var(--primary-color);
+  text-shadow: 0.4vmin 0.4vmin 1.2vmin var(--secondary-color);
+  outline: 0.2vmin solid transparent; 
+  box-shadow: 0 0 0 0.2vmin var(--primary-color), 0 0 0 0.4vmin var(--secondary-color);
 }
 
 footer a:after,
@@ -106,6 +107,8 @@ footer a.hover:after {
 
 footer p {
   color: white;
-  font-size: 2vh;
-  margin-top: 2vh;
+  font-size: 2vmin;
+  margin-top: 2vmin;
+  margin-bottom: 0;
+  text-align: center;
 }
