@@ -45,7 +45,7 @@ const HomeSceneFiber = (
           minDistance={0}
         />
         <FixedCamera />
-        <Environment preset={preset} />
+        <Environment preset="sunset" />
         <DaySky />
         <PointLight />
         <DirectionalLight />

@@ -27,6 +27,7 @@ const ProjectsPage = () => {
         <PointLight />
         <DirectionalLight />
       </Canvas>
+      
     </div>
   );
 };

@@ -7,7 +7,7 @@ import {
 } from "@react-three/drei";
 import { DaySky } from "../three/skies/DaySky";
 
-import ProjectTile from "../utils/ProjectTile";
+import ProjectTile from "../utils/ProjectTileR3F";
 
 import "../../styles/ModelViewerPage.css";
 

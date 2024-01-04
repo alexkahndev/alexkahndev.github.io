@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Gltf } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 import { useNavigate } from "react-router-dom";
+import { useFrame } from "react-three-fiber";
 
 const PlaneModel = () => {
   const modelSrc = "./resources/props/plane.glb";
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
   const navigate = useNavigate();
-  // Set the desired scale, position, and rotation values
-  const scale = [5, 5, 5]; // Make the model twice as large in all directions
-  const position = [0, 10, 0]; // Move the model to the specified position
-  const rotation = [0, 0, 0]; // Rotate the model around the Y-axis by -0.5 radians (around 180 degrees)
+  const scale = [5, 5, 5]; 
+  const position = [0, 10, 0];
+  const rotation = [0, 0, 0]; 
+  const speed = 0.3;
+  const radius = 15;
+
+  const planeRef = useRef();
 
   const hoverProps = useSpring({
     position: hovered
@@ -21,9 +25,22 @@ const PlaneModel = () => {
     config: { mass: 1, tension: 280, friction: 60 },
   });
 
-  // Set the navigate function
+  useFrame(({ clock }) => {
+    const elapsedTime = clock.getElapsedTime();
+
+    if (planeRef.current) {
+      const x = radius * Math.cos(speed * elapsedTime);
+      const z = radius * Math.sin(speed * elapsedTime);
+      planeRef.current.position.x = -x;
+      planeRef.current.position.z = -z;
+
+      
+      const angle = Math.atan2(z, x);
+      planeRef.current.rotation.y = -angle;
+    }
+  });
+
   const handleClick = () => {
-    // Navigate to the projects page (replace '/projects' with the actual path to your projects page)
     navigate("/model-viewer");
     setClicked(!clicked);
   };
@@ -38,6 +55,7 @@ const PlaneModel = () => {
 
   return (
     <animated.mesh
+      ref={planeRef}
       onClick={handleClick}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}

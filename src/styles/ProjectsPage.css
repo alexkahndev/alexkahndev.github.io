@@ -4,9 +4,22 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 }
 
 .projects-page-container canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.project-tiles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+  grid-gap: 1vw;
+  padding: 1vw;
+  position: absolute;
+  z-index: 1;
   width: 100%;
   height: 100%;
 }
