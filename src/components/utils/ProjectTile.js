@@ -3,15 +3,17 @@ import ReactModal from 'react-modal';
 
 import '../../styles/ProjectTile.css';
 
-const ProjectTile = ({ title, description, image }) => {
+const ProjectTile = ({ title, description, image, videoId, icons }) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const openModal = () => {
+    const openModal = (event) => {
+        event.stopPropagation();
         setModalIsOpen(true);
     }
 
-    const closeModal = () => {
+    const closeModal = (event) => {
+        event.stopPropagation();
         console.log("close modal");
         setModalIsOpen(false);
     }
@@ -30,6 +32,18 @@ const ProjectTile = ({ title, description, image }) => {
             >
                 <h1>{title}</h1>    
                 <p>{description}</p>
+                <div className="video-container">
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        src={`https://www.youtube.com/embed/${videoId}?mute=1&loop=1`} 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                
                 <button onClick={closeModal}>Close</button>
             </ReactModal>
         </div>

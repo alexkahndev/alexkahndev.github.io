@@ -9,11 +9,19 @@ import ProjectTile from "../utils/ProjectTile";
 import "../../styles/ProjectsPage.css";
 
 const ProjectsPage = () => {
+  const JavaScriptIcon = 'https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png';
+  const BunIcon = 'https://github.com/marwin1991/profile-technology-icons/assets/136815194/7e9599e9-0570-4bb6-b17f-676ed589912f';
+
+  const PortfolioThumbnail = process.env.PUBLIC_URL + "/resources/images/portfolio.png";
+  const BrandMatchThumbnail = process.env.PUBLIC_URL + "/resources/images/brandmatch.png";
+  const BalloonPopperThumbnail = process.env.PUBLIC_URL + "/resources/images/balloonpopper.png";
+  const InfiniteDriverThumbnail = process.env.PUBLIC_URL + "/resources/images/infinitedriver.png";
+
   const projects = [
-    { title: "Portfolio Website", description: "A personal wesbite used to display skills, achievements, and goals.", image: "https://picsum.photos/200/300" },
-    { title: "Brand Match", description: "An engaging game designed to promote company logos and solutions", image: "https://picsum.photos/200/300" },
-    { title: "Balloon Popper", description: "Modern 3D take on the classic balloon popper game", image: "https://picsum.photos/200/300" },
-    { title: "Infinite Driver", description: "Take control of a car and collect as many points and powerups as you can on an infitnite road", image: "https://picsum.photos/200/300" },
+    { title: "Portfolio Website", description: "A personal wesbite used to display skills, achievements, and goals.", image: PortfolioThumbnail, videoId: "89KcuiXDKb4", icons: [JavaScriptIcon] },
+    { title: "Brand Match", description: "An engaging game designed to promote company logos and solutions", image: BrandMatchThumbnail, videoId: "zTZz_3rMOfQ", icons: [JavaScriptIcon] },
+    { title: "Balloon Popper", description: "Modern 3D take on the classic balloon popper game", image: BalloonPopperThumbnail, videoId: "3wR7f2ARnZY", icons: [JavaScriptIcon] },
+    { title: "Infinite Driver", description: "Take control of a car and collect as many points and powerups as you can on an infitnite road", image: InfiniteDriverThumbnail, videoId: "A8ZmGqpb-Oo", icons: [JavaScriptIcon] },
   ];
 
   return (
@@ -39,6 +47,7 @@ const ProjectsPage = () => {
             title={project.title}
             description={project.description}
             image={project.image}
+            videoId={project.videoId}
           />
         ))}
       </div>

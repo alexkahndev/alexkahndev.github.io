@@ -103,7 +103,7 @@ const App = () => {
             element={<BlogPage setPageTitle={setPageTitle} />}
           />
         </Routes>
-        <Stats />
+        {/*<Stats />*/}
         <Footer 
           colorScheme={colorScheme} 
           projectsHovered={projectsHovered}
