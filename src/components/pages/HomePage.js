@@ -39,7 +39,7 @@ const HomeSceneFiber = (
     <div className="home-page-container">
       <Canvas dpr={window.devicePixelRatio}>
         <OrbitControls
-          enableZoom={true}
+          enableZoom={false}
           enablePan={false}
           target={[0, 0, 0]}
           minDistance={0}

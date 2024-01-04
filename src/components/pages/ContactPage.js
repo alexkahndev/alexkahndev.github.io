@@ -12,13 +12,24 @@ const ContactPage = () => {
   return (
     <div className="projects-page-container">
       <Canvas dpr={window.devicePixelRatio}>
-        <OrbitControls enableZoom={true} enablePan={false} />
+        <OrbitControls 
+        enableZoom={false} 
+        enablePan={false} 
+        />
 
         <Environment preset="sunset" />
         <SpaceSky />
         <PointLight />
         <DirectionalLight />
       </Canvas>
+
+      <div className="about-page-content">
+        <h1>🚧 Check Back Later 🚧</h1>
+        <p style={{ fontSize:'2vmin', fontWeight:'bold', background:'white', margin: '1vmin', padding:'1vmin'}}>
+          I am currently working on this page. Please check back later for more
+          information! In the meantime, feel free to check out any of my exciting projects! Drag your cursor around to look around the scene on any page.
+        </p>
+      </div>
     </div>
   );
 };

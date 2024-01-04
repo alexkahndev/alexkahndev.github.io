@@ -25,7 +25,7 @@ const AboutPage = () => {
 
       <div className="about-page-content">
         <h1>🚧 Check Back Later 🚧</h1>
-        <p>
+        <p style={{ fontSize:'2vmin', fontWeight:'bold', background:'white', margin: '1vmin', padding:'1vmin'}}>
           I am currently working on this page. Please check back later for more
           information! In the meantime, feel free to check out any of my exciting projects! Drag your cursor around to look around the scene on any page.
         </p>
