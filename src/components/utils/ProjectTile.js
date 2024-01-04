@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 
 import '../../styles/ProjectTile.css';
+import '../../styles/ProjectModal.css';
 
-const ProjectTile = ({ title, description, image, videoId, icons }) => {
+const ProjectTile = ({ title, description, image, videoId, demoLink, icons }) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -30,20 +31,23 @@ const ProjectTile = ({ title, description, image, videoId, icons }) => {
                 className="project-modal"
                 overlayClassName="project-modal-overlay"
             >
-                <h1>{title}</h1>    
-                <p>{description}</p>
+                <h1>{title}</h1>
+                <div className="modal-content">
+                    <p>{description} <a href={demoLink}>Demo</a></p>
+                </div>
+
                 <div className="video-container">
-                    <iframe 
-                        width="560" 
-                        height="315" 
-                        src={`https://www.youtube.com/embed/${videoId}?mute=1&loop=1`} 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    <iframe
+                        width="560"
+                        height="315"
+                        src={`https://www.youtube.com/embed/${videoId}?mute=1&loop=1&autoplay=1&playlist=${videoId}`}
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
                     ></iframe>
                 </div>
-                
+
                 <button onClick={closeModal}>Close</button>
             </ReactModal>
         </div>

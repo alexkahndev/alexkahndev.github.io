@@ -18,10 +18,10 @@ const ProjectsPage = () => {
   const InfiniteDriverThumbnail = process.env.PUBLIC_URL + "/resources/images/infinitedriver.png";
 
   const projects = [
-    { title: "Portfolio Website", description: "A personal wesbite used to display skills, achievements, and goals.", image: PortfolioThumbnail, videoId: "89KcuiXDKb4", icons: [JavaScriptIcon] },
-    { title: "Brand Match", description: "An engaging game designed to promote company logos and solutions", image: BrandMatchThumbnail, videoId: "zTZz_3rMOfQ", icons: [JavaScriptIcon] },
-    { title: "Balloon Popper", description: "Modern 3D take on the classic balloon popper game", image: BalloonPopperThumbnail, videoId: "3wR7f2ARnZY", icons: [JavaScriptIcon] },
-    { title: "Infinite Driver", description: "Take control of a car and collect as many points and powerups as you can on an infitnite road", image: InfiniteDriverThumbnail, videoId: "A8ZmGqpb-Oo", icons: [JavaScriptIcon] },
+    { title: "Portfolio Website", description: "A personal wesbite used to display skills, achievements, and goals.", image: PortfolioThumbnail, videoId: "89KcuiXDKb4", demoLink: "https://alexkahndev.github.io", icons: [JavaScriptIcon] },
+    { title: "Brand Match", description: "An engaging game designed to promote company logos and solutions.", image: BrandMatchThumbnail, videoId: "zTZz_3rMOfQ", demoLink: "https://njit-akahn.itch.io/brand-match",icons: [JavaScriptIcon] },
+    { title: "Balloon Popper", description: "Modern 3D take on the classic balloon popper game.", image: BalloonPopperThumbnail, videoId: "3wR7f2ARnZY", demoLink:"https://njit-akahn.itch.io/balloon-popper", icons: [JavaScriptIcon] },
+    { title: "Infinite Driver", description: "Take control of a car and collect as many points and powerups as you can on an infitnite road.", image: InfiniteDriverThumbnail, videoId: "A8ZmGqpb-Oo", demoLink: "https://njit-akahn.itch.io/infinite-driver",icons: [JavaScriptIcon] },
   ];
 
   return (
@@ -48,6 +48,7 @@ const ProjectsPage = () => {
             description={project.description}
             image={project.image}
             videoId={project.videoId}
+            demoLink={project.demoLink}
           />
         ))}
       </div>
