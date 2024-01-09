@@ -1,51 +1,22 @@
-
 .project-modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
-    overflow: auto;
-    border-radius: 4px;
-    outline: none;
-    padding: 20px;
-    width: 80%;
-    height: 80%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-}
-
-.project-modal h1 {
-    font-size: 2em;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.project-modal p {
-    font-size: 1.2em;
-    color: #666;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.project-modal button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    pointer-events: auto;
-}
-
-.project-modal button:hover {
-    background-color: #0056b3;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 4em;
+    padding-right: 4em;
+    max-width: 90%;
+    margin: auto;
 }
 
 .project-modal-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -54,12 +25,29 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 37.5em; /* 600px / 16px (default font-size) */
+}
+
+.modal-content h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.625em;
+}
+
+.modal-content p {
+    font-size: 1em;
+    margin-bottom: 1.25em;
+}
+
 .video-container {
     position: relative;
     width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    margin-bottom: 20px;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    margin-bottom: 1.25em;
 }
 
 .video-container iframe {
@@ -68,4 +56,14 @@
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+button {
+    padding: 0.625em 1.25em;
+    font-size: 1em;
+    border: none;
+    border-radius: 0.3125em;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
 }

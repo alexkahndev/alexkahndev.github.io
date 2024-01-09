@@ -31,24 +31,22 @@ const ProjectTile = ({ title, description, image, videoId, demoLink, icons }) =>
                 className="project-modal"
                 overlayClassName="project-modal-overlay"
             >
-                <h1>{title}</h1>
                 <div className="modal-content">
+                    <h1>{title}</h1>
                     <p>{description} <a href={demoLink}>Demo</a></p>
+                    <div className="video-container">
+                        <iframe
+                            width="560"
+                            height="315"
+                            src={`https://www.youtube.com/embed/${videoId}?mute=1&loop=1&autoplay=1&playlist=${videoId}`}
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                    <button onClick={closeModal}>Close</button>
                 </div>
-
-                <div className="video-container">
-                    <iframe
-                        width="560"
-                        height="315"
-                        src={`https://www.youtube.com/embed/${videoId}?mute=1&loop=1&autoplay=1&playlist=${videoId}`}
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                    ></iframe>
-                </div>
-
-                <button onClick={closeModal}>Close</button>
             </ReactModal>
         </div>
     );
