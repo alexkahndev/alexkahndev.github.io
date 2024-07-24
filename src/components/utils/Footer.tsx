@@ -1,8 +1,8 @@
-import { StyledA } from "./StyledA";
+import { StyledLink } from "./StyledLink";
 
 export const Footer = () => {
   const pages = [
-    { title: "Home", href: "/home" },
+    { title: "Home", href: "/" },
     { title: "About", href: "/about" },
     { title: "Blog", href: "/blog" },
     { title: "Projects", href: "/projects" },
@@ -15,19 +15,36 @@ export const Footer = () => {
         backgroundColor: "rgba(40, 44, 52, 0.5)",
         color: "white",
         textAlign: "center",
-        padding: "20px",
-        position: "fixed",
-        left: 0,
-        bottom: 0,
         width: "100%",
+        padding: "16px 0",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        position: "absolute",
+        bottom: 0,
+        zIndex: 1000,
       }}
     >
-      <p>© 2024 EventGames.io - All rights reserved</p>
-      <nav>
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          width: "100%",
+        }}
+      >
         {pages.map((page) => (
-          <StyledA key={page.title} href={page.href} title={page.title} />
+          <StyledLink key={page.title} href={page.href} title={page.title} />
         ))}
       </nav>
+      <p
+        style={{
+          fontSize: "0.8rem",
+          color: "rgba(255, 255, 255, 0.5)",
+          marginTop: "16px",
+        }}
+      >
+        © 2024 EventGames.io - All rights reserved
+      </p>
     </footer>
   );
 };
