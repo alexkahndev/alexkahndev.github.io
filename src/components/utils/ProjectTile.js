@@ -15,7 +15,6 @@ const ProjectTile = ({ title, description, image, videoId, demoLink, icons }) =>
 
     const closeModal = (event) => {
         event.stopPropagation();
-        console.log("close modal");
         setModalIsOpen(false);
     }
 
