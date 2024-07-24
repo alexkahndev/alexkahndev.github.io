@@ -9,6 +9,7 @@ export const Footer = () => {
     { title: "Contact", href: "/contact" },
   ];
 
+  
   return (
     <footer
       style={{
@@ -28,8 +29,9 @@ export const Footer = () => {
       <nav
         style={{
           display: "flex",
-          justifyContent: "space-around",
-          width: "100%",
+          width: "97.5%",
+          maxWidth: "800px",
+          justifyContent: "space-between",
         }}
       >
         {pages.map((page) => (
