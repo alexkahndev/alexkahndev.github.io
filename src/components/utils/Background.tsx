@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useThree } from "@react-three/fiber";
-import { useEnvironment } from "@react-three/drei";
+import { PerspectiveCamera, useEnvironment } from "@react-three/drei";
 
 type BackgroundProps = {
   backgroundUrl: string;
@@ -29,6 +29,7 @@ export const Background = ({ backgroundUrl }: BackgroundProps) => {
   return (
     <>
       <directionalLight position={[3.3, 1.0, 4.4]} castShadow intensity={1} />
+      <PerspectiveCamera makeDefault position={[0, 40, 50]} />
     </>
   );
 };

@@ -9,7 +9,6 @@ export const Footer = () => {
     { title: "Contact", href: "/contact" },
   ];
 
-  
   return (
     <footer
       style={{
@@ -45,7 +44,7 @@ export const Footer = () => {
           marginTop: "16px",
         }}
       >
-        © 2024 EventGames.io - All rights reserved
+        © 2024 Alex Kahn - All rights reserved
       </p>
     </footer>
   );
