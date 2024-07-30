@@ -1,34 +1,35 @@
 import { Link } from "react-router-dom";
 import { useBreakpointStore } from "../../stores/useBreakPointStore";
-import { animated, useSpring } from "@react-spring/web";
+import { animated, SpringValue } from "@react-spring/web";
 
 type StyledLinkProps = {
   href: string;
   title: string;
+  linkIndex: number;
+  linkSpring: {
+    width: SpringValue<string>;
+  };
+  modelIndex: number;
+  handleModelHover: (index: number) => void;
+  handleModelUnhover: (index: number) => void;
+  handleLinkHover: (index: number) => void;
+  handleLinkUnhover: (index: number) => void;
 };
 
-export const StyledLink = ({ href, title }: StyledLinkProps) => {
+export const StyledLink = ({
+  href,
+  title,
+  linkSpring,
+  linkIndex,
+  modelIndex,
+  handleModelHover,
+  handleModelUnhover,
+  handleLinkHover,
+  handleLinkUnhover,
+}: StyledLinkProps) => {
   const breakpoint = useBreakpointStore((state) => state.breakpoint);
 
   const isMobile = breakpoint === "sm" || breakpoint === "xs";
-
-  const [linkSpring, linkApi] = useSpring(() => ({
-    width: "0%",
-    config: {duration:300}
-  }));
-
-
-  const handleLinkHover = () => {
-    linkApi.start({
-      width: "100%",
-    });
-  }
-
-  const handleLinkUnhover = () => {
-    linkApi.start({
-      width: "0%",
-    });
-  } 
 
   return (
     <div
@@ -38,9 +39,14 @@ export const StyledLink = ({ href, title }: StyledLinkProps) => {
         width: isMobile ? "70px" : "150px",
         height: "auto",
       }}
-      onMouseEnter={handleLinkHover}
-      onMouseLeave={handleLinkUnhover}
-      
+      onMouseEnter={() => {
+        handleModelHover(modelIndex);
+        handleLinkHover(linkIndex);
+      }}
+      onMouseLeave={() => {
+        handleModelUnhover(modelIndex);
+        handleLinkUnhover(linkIndex);
+      }}
     >
       <animated.div
         style={{
@@ -49,7 +55,7 @@ export const StyledLink = ({ href, title }: StyledLinkProps) => {
           left: 0,
           width: linkSpring.width,
           height: "100%",
-          backgroundColor: "red",
+          background: "linear-gradient(45deg, #2C5364, #0F9B8E)",
           borderRadius: "8px",
         }}
       />

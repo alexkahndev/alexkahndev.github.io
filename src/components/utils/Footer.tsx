@@ -1,12 +1,29 @@
+import { SpringValue } from "@react-spring/web";
 import { StyledLink } from "./StyledLink";
 
-export const Footer = () => {
+type FooterProps = {
+  linkSprings: {
+    width: SpringValue<string>;
+  }[];
+  handleModelHover: (index: number) => void;
+  handleModelUnhover: (index: number) => void;
+  handleLinkHover: (index: number) => void;
+  handleLinkUnhover: (index: number) => void;
+};
+
+export const Footer = ({
+  handleModelHover,
+  handleModelUnhover,
+  handleLinkHover,
+  handleLinkUnhover,
+  linkSprings,
+}: FooterProps) => {
   const pages = [
-    { title: "Home", href: "/" },
-    { title: "About", href: "/about" },
-    { title: "Blog", href: "/blog" },
-    { title: "Projects", href: "/projects" },
-    { title: "Contact", href: "/contact" },
+    { title: "Home", href: "/", modelIndex: 3 },
+    { title: "About", href: "/about", modelIndex: 0 },
+    { title: "Blog", href: "/blog", modelIndex: 2 },
+    { title: "Projects", href: "/projects", modelIndex: 1 },
+    { title: "Contact", href: "/contact", modelIndex: 4 },
   ];
 
   return (
@@ -33,8 +50,19 @@ export const Footer = () => {
           justifyContent: "space-between",
         }}
       >
-        {pages.map((page) => (
-          <StyledLink key={page.title} href={page.href} title={page.title} />
+        {pages.map((page, index) => (
+          <StyledLink
+            key={page.title}
+            href={page.href}
+            title={page.title}
+            linkIndex={index}
+            linkSpring={linkSprings[index]}
+            modelIndex={page.modelIndex}
+            handleModelHover={handleModelHover}
+            handleModelUnhover={handleModelUnhover}
+            handleLinkHover={handleLinkHover}
+            handleLinkUnhover={handleLinkUnhover}
+          />
         ))}
       </nav>
       <p

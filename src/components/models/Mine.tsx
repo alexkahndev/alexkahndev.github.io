@@ -8,6 +8,7 @@ import { Mesh, MeshStandardMaterial, Vector3 } from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { animated, useSpring } from "@react-spring/three";
+import { HomeModelProps } from "../../pages/HomePage";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -29,43 +30,24 @@ type GLTFResult = GLTF & {
   animations: GLTFAction[];
 };
 
-export const MineModel = (props: JSX.IntrinsicElements["group"]) => {
-  let baseScale = 1;
-
-  if (props.scale instanceof Vector3) {
-    baseScale = props.scale.x;
-  } else if (typeof props.scale === "number") {
-    baseScale = props.scale;
-  }
-
-  const [modelSpring, modelApi] = useSpring(() => ({
-    scale: baseScale,
-    config: { mass: 1, tension: 280, friction: 60, duration: 300 },
-  }));
-
-  const handleModelHover = () => {
-    modelApi.start({
-      scale: baseScale * 1.1,
-    });
-  };
-
-  const handleModelUnhover = () => {
-    modelApi.start({ scale: baseScale });
-  };
-
-  const handleModelClick = () => {
-    // You can define any click handling logic here
-  };
-
+export const MineModel = ({
+  position,
+  rotation,
+  scale,
+  onPointerEnter,
+  onPointerLeave,
+  onClick,
+}: HomeModelProps) => {
   const { nodes, materials } = useGLTF("/mine-transformed.glb") as GLTFResult;
   return (
     <animated.group
-      {...props}
+      position={position}
+      rotation={rotation}
+      scale={scale}
       dispose={null}
-      {...modelSpring}
-      onPointerOver={handleModelHover}
-      onPointerOut={handleModelUnhover}
-      onClick={handleModelClick}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
+      onClick={onClick}
     >
       <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
         <mesh
