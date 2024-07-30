@@ -1,10 +1,9 @@
 import { useSprings } from "@react-spring/web";
 import { useLocation } from "react-router-dom";
 
-// Define the possible keys as a TypeScript type
 export type LinkPaths = "/" | "/about" | "/blog" | "/projects" | "/contact";
 
-// Define the type for the link settings object
+
 type LinkSettingsType = {
   [key in LinkPaths]: {
     background: string;
@@ -22,12 +21,10 @@ const linkSettings: LinkSettingsType = {
 export const useLinkSprings = (numLinks: number) => {
   const location = useLocation();
 
-  // Ensure the pathname is one of the valid paths
   const currentPath = location.pathname as LinkPaths;
   const currentBackground =
     linkSettings[currentPath]?.background || linkSettings["/"].background;
 
-  // Initialize springs with the background of the current page
   const [linkSprings, linkApi] = useSprings(numLinks, () => ({
     width: "0%",
     background: currentBackground,
