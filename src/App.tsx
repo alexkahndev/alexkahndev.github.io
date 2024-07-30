@@ -15,15 +15,21 @@ export const App = () => {
 
   const {
     modelSprings,
-    handleModelClick,
     handleModelHover,
     handleModelUnhover,
+    handleModelClick,
   } = useModelSprings(modelScales);
 
-  const { linkSprings, handleLinkHover, handleLinkUnhover } = useLinkSprings(5);
+  const {
+    linkSprings,
+    linkApi,
+    handleLinkHover,
+    handleLinkUnhover,
+    handleLinkClick,
+  } = useLinkSprings(5);
 
   useSharedMediaQuery();
-  
+
   return (
     <>
       <Routes>
@@ -32,11 +38,13 @@ export const App = () => {
           element={
             <HomePage
               modelSprings={modelSprings}
-              handleModelClick={handleModelClick}
+              linkApi={linkApi}
               handleModelHover={handleModelHover}
               handleModelUnhover={handleModelUnhover}
               handleLinkHover={handleLinkHover}
               handleLinkUnhover={handleLinkUnhover}
+              handleLinkClick={handleLinkClick}
+              handleModelClick={handleModelClick}
             />
           }
         />
@@ -51,6 +59,7 @@ export const App = () => {
         handleModelUnhover={handleModelUnhover}
         handleLinkHover={handleLinkHover}
         handleLinkUnhover={handleLinkUnhover}
+        handleLinkClick={handleLinkClick}
       />
     </>
   );

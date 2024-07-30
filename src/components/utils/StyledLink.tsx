@@ -1,19 +1,22 @@
 import { Link } from "react-router-dom";
 import { useBreakpointStore } from "../../stores/useBreakPointStore";
 import { animated, SpringValue } from "@react-spring/web";
+import { LinkPaths } from "../../hooks/useLinkSprings";
 
 type StyledLinkProps = {
-  href: string;
+  href: LinkPaths;
   title: string;
   linkIndex: number;
   linkSpring: {
     width: SpringValue<string>;
+    background: SpringValue<string>;
   };
   modelIndex: number;
   handleModelHover: (index: number) => void;
   handleModelUnhover: (index: number) => void;
   handleLinkHover: (index: number) => void;
   handleLinkUnhover: (index: number) => void;
+  handleLinkClick: (href: LinkPaths) => void;
 };
 
 export const StyledLink = ({
@@ -26,6 +29,7 @@ export const StyledLink = ({
   handleModelUnhover,
   handleLinkHover,
   handleLinkUnhover,
+  handleLinkClick,
 }: StyledLinkProps) => {
   const breakpoint = useBreakpointStore((state) => state.breakpoint);
 
@@ -55,12 +59,13 @@ export const StyledLink = ({
           left: 0,
           width: linkSpring.width,
           height: "100%",
-          background: "linear-gradient(45deg, #2C5364, #0F9B8E)",
+          background: linkSpring.background,
           borderRadius: "8px",
         }}
       />
       <Link
         to={href}
+        onClick={() => handleLinkClick(href)}
         style={{
           color: "white",
           textDecoration: "none",

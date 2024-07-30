@@ -7,7 +7,10 @@ type BackgroundProps = {
   cameraPosition?: [number, number, number];
 };
 
-export const Background = ({ backgroundUrl,cameraPosition }: BackgroundProps) => {
+export const Background = ({
+  backgroundUrl,
+  cameraPosition,
+}: BackgroundProps) => {
   const texture = useEnvironment({
     files: backgroundUrl,
   });

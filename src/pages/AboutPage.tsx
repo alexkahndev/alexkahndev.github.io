@@ -5,12 +5,12 @@ import { OrbitControls } from "@react-three/drei";
 export const AboutPage = () => {
   return (
     <Canvas
-    style={{
-      height: "100svh",
-      width: "100svw",
-      backgroundColor: "lightblue",
-    }}
-    shadows
+      style={{
+        height: "100svh",
+        width: "100svw",
+        backgroundColor: "lightblue",
+      }}
+      shadows
     >
       <mesh>
         <boxGeometry args={[1, 1, 1]} />

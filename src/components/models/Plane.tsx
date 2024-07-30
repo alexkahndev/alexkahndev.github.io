@@ -4,10 +4,10 @@ Command: npx gltfjsx@6.4.1 plane.glb --types --shadows --transform --keepmateria
 Files: plane.glb [55.34KB] > /home/alexkahn/alex/portfolio/src/assets/glb/plane-transformed.glb [8.5KB] (85%)
 */
 
-import { Mesh, MeshStandardMaterial, Vector3 } from "three";
+import { Mesh, MeshStandardMaterial } from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
-import { animated, useSpring } from "@react-spring/three";
+import { animated } from "@react-spring/three";
 import { HomeModelProps } from "../../pages/HomePage";
 
 type GLTFResult = GLTF & {

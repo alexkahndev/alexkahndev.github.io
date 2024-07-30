@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls} from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { GroundModel } from "../components/models/Ground";
 import { Background } from "../components/utils/Background";
 import { Lighting } from "../components/utils/Lighting";
@@ -9,7 +9,8 @@ import { DockModel } from "../components/models/Dock";
 import { MineModel } from "../components/models/Mine";
 import { PlaneModel } from "../components/models/Plane";
 import { Vector3 } from "three";
-import { SpringValue } from "@react-spring/three";
+import { SpringRef, SpringValue } from "@react-spring/three";
+import { LinkPaths } from "../hooks/useLinkSprings";
 
 export type HomeModelProps = {
   position?: Vector3;
@@ -24,22 +25,34 @@ type HomePageProps = {
   modelSprings: {
     scale: SpringValue<number>;
   }[];
-  handleModelClick: (index: number) => void;
+  linkApi: SpringRef<{
+    width: string;
+    background: string;
+  }>;
   handleModelHover: (index: number) => void;
   handleModelUnhover: (index: number) => void;
   handleLinkHover: (index: number) => void;
   handleLinkUnhover: (index: number) => void;
+  handleLinkClick: (href: LinkPaths) => void;
+  handleModelClick: (
+    href: LinkPaths,
+    linkApi: SpringRef<{
+      width: string;
+      background: string;
+    }>,
+  ) => void;
 };
 
 export const HomePage = ({
   modelSprings,
-  handleModelClick,
+  linkApi,
   handleModelHover,
   handleModelUnhover,
   handleLinkHover,
   handleLinkUnhover,
+  handleLinkClick,
+  handleModelClick,
 }: HomePageProps) => {
-
   return (
     <Canvas
       className="HomePage"
@@ -50,8 +63,6 @@ export const HomePage = ({
       }}
       shadows
     >
-     
-
       <GroundModel rotation={[0, Math.PI / 24, 0]} />
       <BoatModel
         position={new Vector3(-7, 5, 15)}
@@ -65,7 +76,10 @@ export const HomePage = ({
           handleModelUnhover(0);
           handleLinkUnhover(1);
         }}
-        onClick={() => handleModelClick(0)}
+        onClick={() => {
+          handleModelClick("/about", linkApi);
+          handleLinkClick("/about");
+        }}
       />
       <DockModel
         position={new Vector3(9.5, 4.25, -9)}
@@ -79,7 +93,10 @@ export const HomePage = ({
           handleModelUnhover(1);
           handleLinkUnhover(3);
         }}
-        onClick={() => handleModelClick(1)}
+        onClick={() => {
+          handleModelClick("/projects", linkApi);
+          handleLinkClick("/projects");
+        }}
       />
       <MineModel
         position={new Vector3(2, 9, -16.6)}
@@ -93,7 +110,10 @@ export const HomePage = ({
           handleModelUnhover(2);
           handleLinkUnhover(2);
         }}
-        onClick={() => handleModelClick(2)}
+        onClick={() => {
+          handleModelClick("/blog", linkApi);
+          handleLinkClick("/blog");
+        }}
       />
       <PlaneModel
         position={new Vector3(0, 20, 0)}
@@ -106,7 +126,10 @@ export const HomePage = ({
           handleModelUnhover(3);
           handleLinkUnhover(0);
         }}
-        onClick={() => handleModelClick(3)}
+        onClick={() => {
+          handleModelClick("/", linkApi);
+          handleLinkClick("/");
+        }}
       />
       <LighthouseModel
         position={new Vector3(-5, 7.5, 5)}
@@ -120,7 +143,10 @@ export const HomePage = ({
           handleModelUnhover(4);
           handleLinkUnhover(4);
         }}
-        onClick={() => handleModelClick(4)}
+        onClick={() => {
+          handleModelClick("/contact", linkApi);
+          handleLinkClick("/contact");
+        }}
       />
 
       <OrbitControls

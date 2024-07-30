@@ -1,14 +1,23 @@
 import { SpringValue } from "@react-spring/web";
 import { StyledLink } from "./StyledLink";
+import { LinkPaths } from "../../hooks/useLinkSprings";
 
 type FooterProps = {
   linkSprings: {
     width: SpringValue<string>;
+    background: SpringValue<string>;
   }[];
   handleModelHover: (index: number) => void;
   handleModelUnhover: (index: number) => void;
   handleLinkHover: (index: number) => void;
   handleLinkUnhover: (index: number) => void;
+  handleLinkClick: (href: LinkPaths) => void;
+};
+
+type PageProps = {
+  title: string;
+  href: LinkPaths;
+  modelIndex: number;
 };
 
 export const Footer = ({
@@ -16,9 +25,10 @@ export const Footer = ({
   handleModelUnhover,
   handleLinkHover,
   handleLinkUnhover,
+  handleLinkClick,
   linkSprings,
 }: FooterProps) => {
-  const pages = [
+  const pages: PageProps[] = [
     { title: "Home", href: "/", modelIndex: 3 },
     { title: "About", href: "/about", modelIndex: 0 },
     { title: "Blog", href: "/blog", modelIndex: 2 },
@@ -62,6 +72,7 @@ export const Footer = ({
             handleModelUnhover={handleModelUnhover}
             handleLinkHover={handleLinkHover}
             handleLinkUnhover={handleLinkUnhover}
+            handleLinkClick={handleLinkClick}
           />
         ))}
       </nav>
