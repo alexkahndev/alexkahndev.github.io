@@ -12,17 +12,12 @@ type LinkSettingsType = {
 };
 
 const linkSettings: LinkSettingsType = {
-  "/": { background: "linear-gradient(45deg, #003973, #E5E5BE)" }, 
-  "/about": { background: "linear-gradient(45deg, #F12711, #F5AF19)" }, 
-  "/blog": { background: "linear-gradient(45deg, #8E44AD, #C39BD3)" }, 
+  "/": { background: "linear-gradient(45deg, #003973, #E5E5BE)" },
+  "/about": { background: "linear-gradient(45deg, #F12711, #F5AF19)" },
+  "/blog": { background: "linear-gradient(45deg, #8E44AD, #C39BD3)" },
   "/projects": { background: "linear-gradient(45deg, #00C9FF, #92FE9D)" },
-  "/contact": { background: "linear-gradient(45deg, #FC466B, #3F5EFB)" }, 
+  "/contact": { background: "linear-gradient(45deg, #FC466B, #3F5EFB)" },
 };
-
-
-
-
-
 
 export const useLinkSprings = (numLinks: number) => {
   const location = useLocation();
