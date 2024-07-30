@@ -8,6 +8,7 @@ import { Footer } from "./components/utils/Footer";
 import { ContactPage } from "./pages/ContactPage";
 import { useModelSprings } from "./hooks/useModelSprings";
 import { useLinkSprings } from "./hooks/useLinkSprings";
+import { useSharedMediaQuery } from "./hooks/useSharedMediaQuery";
 
 export const App = () => {
   const modelScales = [2, 4, 5.5, 5, 0.6];
@@ -21,6 +22,8 @@ export const App = () => {
 
   const { linkSprings, handleLinkHover, handleLinkUnhover } = useLinkSprings(5);
 
+  useSharedMediaQuery();
+  
   return (
     <>
       <Routes>

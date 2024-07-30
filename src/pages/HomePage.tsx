@@ -1,10 +1,8 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Text } from "@react-three/drei";
-import { useSharedMediaQuery } from "../hooks/useSharedMediaQuery";
+import { OrbitControls} from "@react-three/drei";
 import { GroundModel } from "../components/models/Ground";
 import { Background } from "../components/utils/Background";
 import { Lighting } from "../components/utils/Lighting";
-import { useEffect, useRef } from "react";
 import { LighthouseModel } from "../components/models/Lighthouse";
 import { BoatModel } from "../components/models/Boat";
 import { DockModel } from "../components/models/Dock";
@@ -41,21 +39,6 @@ export const HomePage = ({
   handleLinkHover,
   handleLinkUnhover,
 }: HomePageProps) => {
-  const breakpoint = useSharedMediaQuery();
-
-  const controlRef = useRef<any>(null);
-
-  useEffect(() => {
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "e") {
-        console.log(controlRef.current);
-      }
-    });
-
-    return () => {
-      document.removeEventListener("keydown", () => {});
-    };
-  }, []);
 
   return (
     <Canvas
@@ -67,13 +50,7 @@ export const HomePage = ({
       }}
       shadows
     >
-      <mesh castShadow receiveShadow>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="hotpink" />
-        <Text color="black" fontSize={0.5} position={[0, 2, 0]}>
-          {breakpoint}
-        </Text>
-      </mesh>
+     
 
       <GroundModel rotation={[0, Math.PI / 24, 0]} />
       <BoatModel
@@ -147,7 +124,6 @@ export const HomePage = ({
       />
 
       <OrbitControls
-        ref={controlRef}
         enablePan={false}
         enableZoom={true}
         enableRotate={true}
@@ -159,7 +135,7 @@ export const HomePage = ({
         dampingFactor={0.1}
       />
       <Lighting />
-      <Background backgroundUrl="/sky.jpg" />
+      <Background backgroundUrl="/sky.jpg" cameraPosition={[0, 40, 50]} />
     </Canvas>
   );
 };

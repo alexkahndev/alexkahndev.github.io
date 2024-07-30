@@ -4,9 +4,10 @@ import { PerspectiveCamera, useEnvironment } from "@react-three/drei";
 
 type BackgroundProps = {
   backgroundUrl: string;
+  cameraPosition?: [number, number, number];
 };
 
-export const Background = ({ backgroundUrl }: BackgroundProps) => {
+export const Background = ({ backgroundUrl,cameraPosition }: BackgroundProps) => {
   const texture = useEnvironment({
     files: backgroundUrl,
   });
@@ -29,7 +30,7 @@ export const Background = ({ backgroundUrl }: BackgroundProps) => {
   return (
     <>
       <directionalLight position={[3.3, 1.0, 4.4]} castShadow intensity={1} />
-      <PerspectiveCamera makeDefault position={[0, 40, 50]} />
+      <PerspectiveCamera makeDefault position={cameraPosition || [0, 0, 5]} />
     </>
   );
 };
