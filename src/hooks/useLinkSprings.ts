@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 
 export type LinkPaths = "/" | "/about" | "/blog" | "/projects" | "/contact";
 
-
 type LinkSettingsType = {
   [key in LinkPaths]: {
     background: string;

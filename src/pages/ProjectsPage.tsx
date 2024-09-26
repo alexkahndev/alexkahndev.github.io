@@ -1,5 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Background } from "../components/utils/Background";
+import { OrbitControls } from "@react-three/drei";
 
 export const ProjectsPage = () => {
   return (
@@ -16,6 +17,7 @@ export const ProjectsPage = () => {
         <meshBasicMaterial color="hotpink" />
       </mesh>
       <Background backgroundUrl="/meadow.jpg" />
+      <OrbitControls />
     </Canvas>
   );
 };
